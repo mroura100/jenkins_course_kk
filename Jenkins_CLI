@@ -1,0 +1,22 @@
+---copiamos la clave ssh publica del usuario del SO al usuario de jenkins
+root@jenkins-server ~ ✖ cd /home/mike/.ssh/
+
+root@jenkins-server /home/mike/.ssh ➜  ll
+total 16
+drwx------ 2 mike mike 4096 Mar 18 09:03 ./
+drwxr-xr-x 3 mike mike 4096 Mar 18 09:03 ../
+-rw------- 1 mike mike 2610 Mar 18 09:03 jenkins_key
+-rw-r--r-- 1 mike mike  573 Mar 18 09:03 jenkins_key.pub
+
+root@jenkins-server /home/mike/.ssh ➜  cat jenkins_key.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCu5IEnqjkC1TJDV492AhUp2OjpXb8gIbfv9WwvMo6Isd25y77VrflXsdt2BqLuFLLdnuf86pnxfY0yqXsuEyUNeJh6jnHyZxE7VkqETFQ7GM6D5029F4RK6s8Z04mHg1Hjxw2Q3H+zzZGRfxolV7TSxP7JgSyRmAeVu6sgIhLw6CRsynjudB+BQWRKZ1jc7pwul1yvdTNVJ9IJC/PCcrn37VSWGpQ5LlKALPOnb5gRO/gtyek+mtyrPjbXvFnRgsImXb0MsS2Sy6SI6zyolyWTi5xzbOHW5+mBVgu21gKOYCjvLkit2IV+zJbjC/rtpfOBm2DsV2A4xaxoL/BrSvqv4kQgsz+opy7VSTuH6LqpYy+31/9WY1LiNw+DeXbWAY+/9JenVP4FABPY/TZOZQIfUkT4vLE23t9rYSCjdNhvv74IOPS9WfjISJev/GuVwmJ3X/mvm9TSOgV7MgL3y61pEwYLAfy2S6+NBPAhUmjyuIZT/oFNVSf+KXYVgE7TaZ0= mike@jenkins-server
+
+--- nos conectamos a jenkins por ssh
+Keep a note of the options used with the SSH command:
+
+-i flag is used to point to mike's private SSH key. Remember, we have already added the public key in the Jenkins configuration.
+-l is the login user which in our example is mike
+-p is the port which we found out in the previous step to be 8022
+
+ssh -i /home/mike/.ssh/jenkins_key -l mike -p 8022 jenkins-server help
+
