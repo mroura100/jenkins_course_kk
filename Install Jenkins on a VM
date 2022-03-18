@@ -34,4 +34,30 @@ sudo systemctl start jenkins
 ebabde01dd79485487dc6c80ff8e9259
 
 ---Instalamos los plugins sugeridos automáticamente
+--creamos las credenciales de admin
+Create First Admin User
+Username: admin
+Password: Admin321
+Confirm password: Admin321
+Full name: Admin User
+E-mail address:  admin@example.com
+
+---Instance Configuration---
+Jenkins URL:	
+https://8090-port-da3ed25b331a47b0.labs.kodekloud.com/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
