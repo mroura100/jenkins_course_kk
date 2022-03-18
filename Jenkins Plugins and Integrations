@@ -1,1 +1,43 @@
---Jenkins Plugins and Integrations--
+--Jenkins Plugins and Integrations with CLI--
+Jenkins server is already installed and it's running on port 8085. You will find the jenkins-cli.jar file under /root on the Jenkins server, which you can use to interact with Jenkins over CLI.
+
+You can use Jenkins CLI from the terminal using below given command:
+
+java -jar jenkins-cli.jar -s http://localhost:8085 -auth 'admin:Adm!n321' <command>
+
+
+Below are the Jenkins credentials:
+
+
+
+UserName: admin
+Password: Adm!n321
+
+Notes:
+1. You might need to restart Jenkins service after installing some plugins or after making some configuration changes etc. In such case please make sure Jenkins service is back up before you submit your solution.
+2. Please make a note of Jenkins credentials given above.
+3. This lab is mainly focused on Jenkins CLI so please avoid using Jenkins UI during this lab.
+
+---Install the Bitbucket Branch Source plugin using the Jenkins CLI.
+-Execute below given command:
+java -jar jenkins-cli.jar -s http://localhost:8085 -auth 'admin:Adm!n321' install-plugin cloudbees-bitbucket-branch-source
+-Then restart Jenkins service:
+sudo service jenkins restart
+
+--Upgrade the cloud-stats plugin to the latest available version using the Jenkins CLI.
+-Execute below given command:
+java -jar jenkins-cli.jar -s http://localhost:8085 -auth 'admin:Adm!n321' install-plugin cloud-stats
+-Make sure to restart jenkins service:
+sudo service jenkins restart
+
+-Disable(remove) the github plugin using the Jenkins CLI.
+java -jar jenkins-cli.jar -s http://localhost:8085 -auth 'admin:Adm!n321' disable-plugin github -restart -r
+-Make sure to restart jenkins service:
+sudo service jenkins restart
+
+
+
+
+
+
+
