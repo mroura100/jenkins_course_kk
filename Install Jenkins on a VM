@@ -1,1 +1,37 @@
-d
+--install jenkinf on centOS--
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+sudo yum upgrade
+# Add required dependencies for the jenkins package
+sudo yum install java-11-openjdk
+sudo yum install jenkins
+
+Start Jenkins
+You can enable the Jenkins service to start at boot with the command:
+
+sudo systemctl enable jenkins
+You can start the Jenkins service with the command:
+
+sudo systemctl start jenkins
+You can check the status of the Jenkins service using the command:
+
+sudo systemctl status jenkins
+
+
+
+---- cambiamos puerto jenkins ----
+-Edit /lib/systemd/system/jenkins.service file and change Jenkins port to 8090 by updating Environment="JENKINS_PORT=" variable value.
+sudo vi /lib/systemd/system/jenkins.service
+-It should look like this:
+Environment="JENKINS_PORT=8090"
+-recargamos servicio y lo reiniciamos
+sudo systemctl daemon-reload
+sudo systemctl start jenkins
+
+---nos conectamos a la url de jenkins e introducimos el initialAdminPassword
+[bob@centos-host jenkins]$ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+ebabde01dd79485487dc6c80ff8e9259
+
+---Instalamos los plugins sugeridos automáticamente
+
